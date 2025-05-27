@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +20,9 @@ public class Car {
 
     @Column
     private int series;
+
+    @OneToOne(mappedBy = "car")
+    private User user;
 
     public Car() {}
 
@@ -43,5 +47,13 @@ public class Car {
     }
     public void setSeries(int series) {
         this.series = series;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", series='" + series + "}";
     }
 }
