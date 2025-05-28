@@ -23,6 +23,14 @@ public class User {
    @JoinColumn(name = "car_id") // внешний ключ в таблице User
    private Car car;
 
+   public Car getCar() {
+      return car;
+   }
+
+   public void setCar(Car car) {
+      this.car = car;
+   }
+
    public User() {}
    
    public User(String firstName, String lastName, String email) {

@@ -1,5 +1,4 @@
 package hiber.dao;
-
 import hiber.model.User;
 
 import java.util.List;
