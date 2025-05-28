@@ -3,6 +3,7 @@ package hiber.service;
 import hiber.dao.UserDao;
 import hiber.model.Car;
 import hiber.model.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
+import static com.mysql.cj.conf.PropertyKey.logger;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -43,6 +49,6 @@ public class UserServiceImp implements UserService {
       Query<User> query = session.createQuery(hql, User.class);
       query.setParameter("model", model);
       query.setParameter("series", series);
-      return query.uniqueResultOptional().orElse(null);
+      return query.uniqueResult(); // возвращает User или null, если не найден
    }
 }

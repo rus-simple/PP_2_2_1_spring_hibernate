@@ -23,7 +23,7 @@ public class MainApp {
             userService.add(new User("User3", "Lastname3", "user3@mail.ru"), new Car("Nissan", 2022));
             userService.add(new User("User4", "Lastname4", "user4@mail.ru"), new Car("BMW", 2023));
          } catch (Exception e) {
-            logger.log(Level.SEVERE, "Ошибка при добавлении пользователей: ", e);
+            logger.log(Level.WARNING, "Ошибка при добавлении пользователей: ", e);
          }
 
          // Вывод списка пользователей
@@ -53,7 +53,7 @@ public class MainApp {
                System.out.println("Пользователь не найден!");
             }
          } catch (Exception e) {
-            logger.log(Level.INFO, "Ошибка при поиске пользователя по машине: ", e);
+            logger.log(Level.WARNING, "Ошибка при поиске пользователя по машине: ", e);
          }
       } catch (Exception e) {
          logger.log(Level.SEVERE, "Критическая ошибка при запуске приложения: ", e);
