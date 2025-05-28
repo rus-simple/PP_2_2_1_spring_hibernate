@@ -8,3 +8,15 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Исключить папку сборки Maven/Gradle
+/target
+
+# Исключить папку настроек IntelliJ IDEA
+/.idea
+
+# Исключить файлы проекта IDEA
+*.iml
+
+# Исключить временные файлы IDE
+*.ipr
+*.iws
