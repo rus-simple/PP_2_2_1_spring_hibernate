@@ -10,13 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.Optional;
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
-import static com.mysql.cj.conf.PropertyKey.logger;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -42,13 +36,9 @@ public class UserServiceImp implements UserService {
       return userDao.listUsers();
    }
 
-   @Transactional
+   @Transactional(readOnly = true)
+   @Override
    public User findUserByCar(String model, int series) {
-      Session session = sessionFactory.getObject().getCurrentSession();
-      String hql = "FROM User u WHERE u.car.model = :model AND u.car.series = :series";
-      Query<User> query = session.createQuery(hql, User.class);
-      query.setParameter("model", model);
-      query.setParameter("series", series);
-      return query.uniqueResult(); // возвращает User или null, если не найден
+      return userDao.findUserByCar(model, series);
    }
 }
